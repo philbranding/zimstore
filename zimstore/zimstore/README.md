@@ -33,14 +33,25 @@
     - `       context = {}`
     - `       return render(request, 'appfoldername/main.html', context )`
     
- #02 URLs
-08. create the url-paths in the appfolder/url.py
+# 02 URLs
+08. create the urls.py  file for the paths in the appfolder/urls.py
     - ` from django.urls import path`
     - ` from . import views`
-    
+    - `` ``
     - ` urlspatterns = [`
     - ` #leave as empty string for base url`
     - ` path ('', views.store, name="store"),`
     - ` path ('cart/', views.cart, name="cart"),`
     - ` path ('checkout/', views.checkout, name="checkout")`
     - `] `
+    
+ 9. add the urls into the projectfolder/urls.py
+    -  ` from django.contrib import admin`
+    - ` from django.urls import path, include` 
+    - `` ``
+    - `urlpatterns = [`
+    - `path('admin/', admin.site.urls),
+    - `path('', include('store.urls'))`
+    - `]`
+    
+ 10. Run `python manage.py migrate`
