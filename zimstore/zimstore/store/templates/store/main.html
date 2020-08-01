@@ -27,11 +27,18 @@
         <a href="#" class="btn btn-warning">Login</a>
 
         <a href="{% url 'cart'%}">
-            <img src="{% static 'images/cart.png'%}">
+            <img src="{% static 'images/cart.png'%}" id="cart-icon">
         </a>
 
         <p id="cart-total">0</p>
     </div>
+      <div>
+          <a class="btn btn-success btn-lg ml-3" href="cart.html">
+                    <i class="fa fa-shopping-cart"></i> Cart
+                    <span class="badge badge-light">2</span>
+          </a>
+      </div>
+
   </div>
 </nav>
 <hr>
