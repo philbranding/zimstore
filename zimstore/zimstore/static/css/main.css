@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap');
 body{
 	background-color: hsl(0, 0%, 98%);
+	 font-family: 'Ubuntu', sans-serif;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -30,20 +32,16 @@ h1,h2,h3,h4,h5,h6{
 }
 
 #cart-icon{
-	width:50px;
+	width:30px;
 	display: inline-block;
-	margin-left: 15px;
+	margin-left: 10px;
+	margin-right:10px;
 }
 
 #cart-total{
-	display: block;
 	text-align: center;
 	color:#fff;
 	background-color: red;
-	width: 20px;
-	height: 25px;
-	border-radius: 50%;
-	font-size: 14px;
 }
 
 .col-lg-4, .col-lg-6, .col-lg-8, .col-lg-12{
@@ -55,7 +53,7 @@ h1,h2,h3,h4,h5,h6{
 	width: 100px;
 }
 
-.form-field{
+.form-fielwd{
 	width:250px;
 	display: inline-block;
 	padding: 5px;
@@ -95,8 +93,16 @@ h1,h2,h3,h4,h5,h6{
 	display: none!important;
 }
 
-logo{
-    width:30px;
+.logo{
 	display: inline-block;
-	margin-left: 15px;
+	margin-left: 30px;
+}
+
+.quantity {
+    float: left;
+    margin-right: 15px;
+    background-color: #eee;
+    position: relative;
+    width: 80px;
+    overflow: hidden
 }
