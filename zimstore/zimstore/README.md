@@ -106,3 +106,8 @@
     - ` <h1>Checkout</h1> `
     -   `  `
     - ` {% endblock content %} `
+    
+ # Models    
+ 15. in the app/models.py
+    - add the following library import
+    - ` from django.connrib.auth.models import User` 
