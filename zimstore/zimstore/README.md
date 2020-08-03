@@ -182,6 +182,13 @@
         - ` </div> `
         - `  {%  endblock conent %} `
 
- 
-    
+ # rendering out the Product images
+ 22.  We will have to add and image field to our model
+        - this needs to be configured separately 
+        - in the model.py add to the product class
+        - ` image = models.ImageField(null=True, blank=True)`
+        - install the pillow module to help with the imagefield
+        - `  python -m pip install Pillow`
+        
+        
  
