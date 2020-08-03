@@ -111,3 +111,29 @@
  15. in the app/models.py
     - add the following library import
     - ` from django.connrib.auth.models import User` 
+    
+    
+ 16. after making the models for all the relations we need 
+ 
+ `class Order(models.Model): `
+    `customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)  `
+    ` date_ordered = models.DateTimeField(auto_now_add=True) `
+    ` complete = models.BooleanField(default=False)  `
+    ` transaction_id = models.CharField(max_length=100, null=True)` 
+
+    ` def __str__(self): `
+       `  return str(self.id) `
+       
+    - run $ ` python manage.py makemigrations ` 
+    - prep the database
+    - run $ ` python manage.py migrate` 
+    
+ 17. Register the models in the admin.py file in the app and import, then register each individual model
+ 
+ - ` from .models import * `
+ - ` admin.site.register(Customer) `
+ - ` admin.site.register(Product) `
+ - ` admin.site.register(Order) `
+ - ` admin.site.register(OrderItem)`
+ - ` admin.site.register(ShippingAddress) `
+ 
