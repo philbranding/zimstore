@@ -130,10 +130,37 @@
     
  17. Register the models in the admin.py file in the app and import, then register each individual model
  
- - ` from .models import * `
- - ` admin.site.register(Customer) `
- - ` admin.site.register(Product) `
- - ` admin.site.register(Order) `
- - ` admin.site.register(OrderItem)`
- - ` admin.site.register(ShippingAddress) `
+    - ` from .models import * `
+    - ` admin.site.register(Customer) `
+    - ` admin.site.register(Product) `
+    - ` admin.site.register(Order) `
+    - ` admin.site.register(OrderItem)`
+    - ` admin.site.register(ShippingAddress) `
+ 
+ 
+ # Create the Admin User
+ 18. now we can create a user and login to make sure all our models were properly registered.
+ 
+    - `  $ python manage createsuperuser  `
+    - add a name, email and a password, confirm the password
+ 
+ 19. Added some products via the Administration Dashboard
+ 
+    - ` $ python manage.py runserver`
+    - Once the server starts running  enter /admin 
+    - Login the super user account
+    - Add the products one by one
+    
+ # Importing models into views
+ 20. open the views.py in the app folder
+       -     add
+       - ` from .models import * `
+       
+       - add the products object and pass them through the context 
+       - ` def  store(request): `
+       - ` product = Product.object.all()`
+       - ` context = {'products':products} `
+       - ` return render(request, 'store/store.html', context) ` 
+ 
+    
  
