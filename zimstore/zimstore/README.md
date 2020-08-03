@@ -60,96 +60,96 @@
  
  # 03 Static
  11. create the static folder in th root folder next to the project folder
-    - static/css/main.css
+        - static/css/main.css
         - ` body{ background-color:bluee}`
-    - static/images/
-    - static/js/ 
+        - static/images/
+        - static/js/ 
     
  12. in the settings.py under static add
-    - ` STATICFILES_DIRS = [  `
-    - ` os.path.join(BASE_DIR, static)`
-    - ` ]`
+        - ` STATICFILES_DIRS = [  `
+        - ` os.path.join(BASE_DIR, static)`
+        - ` ]`
  
  13. Linking the static files  
-    - ` <!DOCTYPE html> `
-    - ` {% load static %} `
-    - ` <html lang="en"> `
-    - ` <head> ` 
-    - ` <meta charset="UTF-8"> `
-    - ` <meta content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" name="viewport"/> `
-    - ` <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> `  
-    - ` <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"> `
-    - ` <title> zimstore | home </title> `
-    - ` </head> `
-    - ` <body> `
-    - ` <h1> Navbar placeholder </h1>`   
-    - ` <hr> `
-    - ` <div class="container"> `
+        - ` <!DOCTYPE html> `
+        - ` {% load static %} `
+        - ` <html lang="en"> `
+        - ` <head> ` 
+        - ` <meta charset="UTF-8"> `
+        - ` <meta content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" name="viewport"/> `
+        - ` <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> `  
+        - ` <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"> `
+        - ` <title> zimstore | home </title> `
+        - ` </head> `
+        - ` <body> `
+        - ` <h1> Navbar placeholder </h1>`   
+        - ` <hr> `
+        - ` <div class="container"> `
         - `<br> `
         - `{% block content %}`
-    - `{% endblock content%}`
-    - ` </div> `
-    - ` <!------JavaScript------>  `
-    - ` <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>  `
-    - ` <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> `  
-    - ` <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> `
-    - ` </body> `
-    - ` </html> ` 
+        - `{% endblock content%}`
+        - ` </div> `
+        - ` <!------JavaScript------>  `
+        - ` <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>  `
+        - ` <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> `  
+        - ` <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> `
+        - ` </body> `
+        - ` </html> ` 
  
  
  
  14. Inheriting files 
-    - ` {% extends 'store/main.html' %} `
-    - ` {% load static %} `
-    - ` {% block content %} `
-    -  ` `
-    - ` <h1>Checkout</h1> `
-    -   `  `
-    - ` {% endblock content %} `
+        - ` {% extends 'store/main.html' %} `
+        - ` {% load static %} `
+        - ` {% block content %} `
+        -  ` `
+        - ` <h1>Checkout</h1> `
+        -   `  `
+         - ` {% endblock content %} `
     
  # Models    
  15. in the app/models.py
-    - add the following library import
-    - ` from django.connrib.auth.models import User` 
+        - add the following library import
+        - ` from django.connrib.auth.models import User` 
     
     
  16. after making the models for all the relations we need 
  
- `class Order(models.Model): `
-    `customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)  `
-    ` date_ordered = models.DateTimeField(auto_now_add=True) `
-    ` complete = models.BooleanField(default=False)  `
-    ` transaction_id = models.CharField(max_length=100, null=True)` 
+        -  `class Order(models.Model): `
+        -  `customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)  `
+        -  ` date_ordered = models.DateTimeField(auto_now_add=True) `
+        -  ` complete = models.BooleanField(default=False)  `
+        -  ` transaction_id = models.CharField(max_length=100, null=True)` 
 
-    ` def __str__(self): `
-       `  return str(self.id) `
+        -  ` def __str__(self): `
+        -  `  return str(self.id) `
        
-    - run $ ` python manage.py makemigrations ` 
-    - prep the database
-    - run $ ` python manage.py migrate` 
+        - run $ ` python manage.py makemigrations ` 
+        - prep the database
+        - run $ ` python manage.py migrate` 
     
  17. Register the models in the admin.py file in the app and import, then register each individual model
  
-    - ` from .models import * `
-    - ` admin.site.register(Customer) `
-    - ` admin.site.register(Product) `
-    - ` admin.site.register(Order) `
-    - ` admin.site.register(OrderItem)`
-    - ` admin.site.register(ShippingAddress) `
+        - ` from .models import * `
+        - ` admin.site.register(Customer) `
+        - ` admin.site.register(Product) `
+        - ` admin.site.register(Order) `
+        - ` admin.site.register(OrderItem)`
+        - ` admin.site.register(ShippingAddress) `
  
  
  # Create the Admin User
  18. now we can create a user and login to make sure all our models were properly registered.
  
-    - `  $ python manage createsuperuser  `
-    - add a name, email and a password, confirm the password
+        - `  $ python manage createsuperuser  `
+        - add a name, email and a password, confirm the password
  
  19. Added some products via the Administration Dashboard
  
-    - ` $ python manage.py runserver`
-    - Once the server starts running  enter /admin 
-    - Login the super user account
-    - Add the products one by one
+        - ` $ python manage.py runserver`
+        - Once the server starts running  enter /admin 
+        - Login the super user account
+        - Add the products one by one
     
  # Importing models into views
  20. open the views.py in the app folder
@@ -161,6 +161,27 @@
        - ` product = Product.object.all()`
        - ` context = {'products':products} `
        - ` return render(request, 'store/store.html', context) ` 
+       
+ # replacing the filler data 
+ 21. create a for-loop 
+        - ` {% extends 'store/main.html' %} `
+        - ` {% load static %} `
+        - ` {% block content %}`
+        - `  {% for product in products %} `
+        - ` <div class="col-lg-4"> `
+        - ` <img class= "thumbnail" scr={% static 'images/placeholder.png' %}> `
+        - ` <div class="box-element product"> `
+        - ` <h6><strong> {{product.name}}</strong></h6> `
+        - ` <hr>`
+        - ` <button class="btn btn-outline-secondary add-btn">Add to Cart </button> `
+        - ` <a class="btn btn-outline-success" href=# >View</a> ` 
+        - ` <h4 style= "dispaly: inline-block; float: right"><strong>${{product.price|floatformat:2}}</strong> </h4>`
+        - ` </div> `
+        - ` </div> `
+        - ` {% endfor %} `
+        - ` </div> `
+        - `  {%  endblock conent %} `
+
  
     
  
