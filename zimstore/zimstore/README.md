@@ -189,6 +189,15 @@
         - ` image = models.ImageField(null=True, blank=True)`
         - install the pillow module to help with the imagefield
         - `  python -m pip install Pillow`
+        - now run Migrations
+        - `  python manage.py makemigrations`
+        - `  python manage.py migrate `
+        - the imagefield will be added in the admin panel
+        - there is need to do the root folder configuration the media root for saving the images first
+ 
+ # Setting the Media Root for images
+ 23. go to the settings.py and underneath the staticfiles_dirs
+        - ` MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/products')  `
         
         
  
