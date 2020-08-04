@@ -198,6 +198,15 @@
  # Setting the Media Root for images
  23. go to the settings.py and underneath the staticfiles_dirs
         - ` MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/products')  `
+ 
+ 24. set the media url in the seetings.py
+        - ` MEDIA_URL = ' /images/products/' `
+ 
+ 25. Urls.py Configuration
+        - ` from django.conf.urls.static import static`
+        - ` django.conf import settings `
         
+        - ` urlpatterns +=static  `
+ 
         
  

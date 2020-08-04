@@ -126,5 +126,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+# setting the media url for the images
+MEDIA_URL = 'images/products/'
+
 # Configuring the root folder where pip install Pillow will save uploaded images
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/products')
