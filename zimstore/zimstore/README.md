@@ -209,4 +209,14 @@
         - ` urlpatterns +=static  `
  
         
- 
+ # Testing the Cart 
+ 26. create a new customer via the admin panel
+        -  give the customer a name and am email and link it top the admin profile
+        -  create a new order and give it a number
+        -  add items into the order
+        
+ 27. in the cart.py under check for authentication of the user whether they are logged in or not
+        - ` def cart(request): ` 
+        - ` `        
+        - ` context = {} `         
+        - ` ` 
