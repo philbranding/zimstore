@@ -199,7 +199,7 @@
  23. go to the settings.py and underneath the staticfiles_dirs
         - ` MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/products')  `
  
- 24. set the media url in the seetings.py
+ 24. set the media url in the settings.py
         - ` MEDIA_URL = ' /images/products/' `
  
  25. Urls.py Configuration
@@ -215,8 +215,29 @@
         -  create a new order and give it a number
         -  add items into the order
         
- 27. in the cart.py under check for authentication of the user whether they are logged in or not
+ 27. in the views.py under check for authentication of the user whether they are logged in or not
         - ` def cart(request): ` 
-        - ` `        
-        - ` context = {} `         
-        - ` ` 
+        - we will first check if the order was already created or we will create a new order
+        - for the logged in user
+        - ` if request.user.is_authenticated: `
+        - ` customer = request.user.customer `  
+        - ` order, created = Oder.objects.get_or_create(customer=customer, complete=False) `
+        - ` items = order.orderitem_set.all()`
+        - ` else: `
+        - ` items = [] `           
+        - ` context = {'items ': items} `         
+        - ` return render(request, 'store/cart.html',context)` 
+        
+ # Replace the dynamic info in th cart
+ 28. use the dynamic links to reference the images, and any other product attributes e.g price
+        - ` img src ="{{item.product.imageURL}}" `
+        - ` ${{item.product.name}} ` 
+        - ` ${{item.product.price|floatformat:2}} `
+        - ` x{{item.quantity}} ` 
+        
+ 29. Add the function that calculates the Total in the models.py 
+        - `  @property` 
+        - `  def get_total(self):` 
+        - `  total = self.product.price * self.quantity` 
+        - `  return total `
+        - `  ${{item.product.name}} ` 

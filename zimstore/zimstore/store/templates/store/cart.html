@@ -3,7 +3,6 @@
 {% block content %}
 
 
-
 <div class="container">
 <div class="row">
     <div class="col-lg-12">
@@ -11,7 +10,7 @@
             <a class="btn btn-outline-dark" href="{% url 'store' %}"> &#x2190; Continue Shopping </a>
         </div>
     </div>
-    <br>
+    <hr>
     <br>
 
     <table class="table">
@@ -36,31 +35,31 @@
                 <div style="flex:1"><strong>Quantity</strong></div>
                 <div style="flex:1"><strong> Total</strong></div>
             </div>
-
+            {% for item in items %}
             <div class="cart-row">
-                <div style="flex:2"><img class="row-image" src="{% static 'images/placeholder.png' %}"></div>
-                <div style="flex:2">Product 1</div>
-                <div style="flex:1">$20</div>
+                <div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}" >
+                </div>
+                <div style="flex:2"><p>{{item.product.name}}</p></div>
+                <div style="flex:1"><p>${{item.product.price|floatformat:2}}</p></div>
                 <div style="flex:1">
-
                     <div class="col-4 col-sm-4 col-md-4">
                                 <div class="quantity">
                                     <input type="button" value="+" class="plus">
-                                    <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty" size="4">
+                                    <input type="number" step="1" max="99" min="1" value="{{item.quantity}}" title="Qty" class="qty" size="4">
                                     <input type="button" value="-" class="minus">
                                 </div>
                             </div>
                 </div>
-                <div style="flex:1"></div>
+                <div style="flex:1">${{item.get_total}}</div>
             </div>
-
+            {% endfor %}
         </div>
     </div>
 
 </div>
 </div>
 
-
+<!--
 <div class="container">
    <div class="card shopping-cart">
             <div class="card-header bg-dark text-light">
@@ -70,7 +69,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="card-body">
-                    <!-- PRODUCT -->
+
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-2 text-center">
                                 <img class="img-responsive" src="{% static  'images/products/mazowe.jpg' %}" alt="prewiew" width="120" height="120">
@@ -100,8 +99,7 @@
                         </div>
                     </div>
                     <hr>
-                    <!-- END PRODUCT -->
-                    <!-- PRODUCT -->
+
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-2 text-center">
                                 <img class="img-responsive" src="{% static  'images/products/sugar2kg.jpg' %}" alt="prewiew" width="120" height="120">
@@ -131,7 +129,7 @@
                         </div>
                     </div>
                     <hr>
-                    <!-- END PRODUCT -->
+
                 <div class="pull-right">
                     <a href="" class="btn btn-outline-secondary pull-right">
                         Update shopping cart
@@ -148,7 +146,7 @@
             </div>
         </div>
 </div>
-
+ --->
 
 
 

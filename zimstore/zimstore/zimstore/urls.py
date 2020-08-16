@@ -20,8 +20,6 @@ from django.conf import settings  # MEDIA ROOT
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('store.urls'))
-
+    path('', include('store.urls')),
 ]
-
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Appending the url for dynamic access
