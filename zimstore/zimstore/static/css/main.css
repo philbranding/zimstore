@@ -10,6 +10,13 @@ h1,h2,h3,h4,h5,h6{
 	color:hsl(0, 0%, 30%);
 }
 
+
+.navbar{
+    height: 200px;
+    margin-bottom: 0px;
+
+}
+
 .box-element{
 	box-shadow:hsl(0, 0%, 90%) 0 0 8px;
 	background-color: #fff;

@@ -16,7 +16,8 @@ class Customer(models.Model):
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, blank=False)
+    description = models.CharField(max_length=200, blank=True)
     price = models.FloatField()
     digital = models.BooleanField(default=False, null=True, blank=True)
     image = models.ImageField(upload_to='images/', null=True, blank=True)  # requires pip install Pillow
@@ -45,7 +46,13 @@ class Order(models.Model):
     @property
     def get_cart_total(self):
         orderitems = self.orderitem_set.all()
-        total = sum([item.get_total for item in orderitems])
+        total = sum([item.get_total for item in orderitems]) # using the get_order function from OrderItem
+        return total
+
+    @property
+    def get_cart_items(self):
+        orderitems = self.orderitem_set.all()
+        total = sum([item.quantity for item in orderitems]) # using the quantity function
         return total
 
 
@@ -56,7 +63,7 @@ class OrderItem(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     @property
-    def get_total(self):
+    def get_total(self): # will be used in the get_cart_total
         total = self.product.price * self.quantity
         return total
 
