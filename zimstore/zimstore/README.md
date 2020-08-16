@@ -234,10 +234,19 @@
         - ` ${{item.product.name}} ` 
         - ` ${{item.product.price|floatformat:2}} `
         - ` x{{item.quantity}} ` 
-        
+ 
+ # Calculating Totals    
  29. Add the function that calculates the Total in the models.py 
-        - `  @property` 
-        - `  def get_total(self):` 
-        - `  total = self.product.price * self.quantity` 
+        - `  @property ` 
+        - `  def get_total(self): ` 
+        - `  total = self.product.price * self.quantity ` 
         - `  return total `
-        - `  ${{item.product.name}} ` 
+        - `  ${{item.product.name}} `  
+        
+29. Add the function that calculates the Total in the models.py 
+        - `  @property ` 
+        - `  def get_cart_total(self): ` 
+        - `  orderitems = self.orderitem_set.all() ` 
+        - `  total = sum([item.get_total for item in orderitems]) ` 
+        - `  return total `
+        
