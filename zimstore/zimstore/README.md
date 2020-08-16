@@ -277,3 +277,23 @@
         - add the dynamic link in the main.html 
         - ` <script type= "text/javascript" src="{% static 'js/cart.js' %}"> </script>` 
         - test it ` console.log("Hello Wolrd"); `
+        
+33. Use the 'update-cart' attribute to add or remove to the cart
+        - add the 'update-cart' class for buttons 
+        - for the home page, cart and checkout pages for consistence
+        - ` <button data-product="{{product.id}}" data-action="add" class="btn "`
+        - ` btn-outline-secondary add-btn update-cart>" Add to Cart </button>` 
+        
+34. Add event handlers in the cart.js
+        - first query all the buttons with the update-cart class
+        - loop through all the btns and add an event listener
+        - this.dataset.product is what enable us to use custom attributes
+        - on click set a function thats sets a productID and the action
+        - `  var updateBtns = document.getElementsByClassName('update-cart') `
+        - ` for(i = 0; i < updateBtns.length; i++){ `
+        - ` updateBtns[i].addEventListener('click', function(){ `
+        - ` var productId = this.dataset.product `
+        - ` var action = this.dataset.action `
+        - `  console.log('productId:', productId, 'Action:', action) `
+        - ` }) `
+        - ` } `
