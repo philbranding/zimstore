@@ -1,0 +1,1 @@
+console.log("Hello JScript to the World");

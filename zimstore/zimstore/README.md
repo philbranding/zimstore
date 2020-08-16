@@ -23,7 +23,7 @@
     - open the default django webpage at Localhost:8000
  
 # 00 Templating
-06. create new Template folder in the projectfolder/appfolder/templates/store
+06. create new Template folder in the ´ projectfolder/appfolder/templates/store´
     - templates folder inside the app folder
     - create a store folder inside the templates folder
     - create HTML template files inside the store folder
@@ -257,7 +257,7 @@
         - ` total = sum([item.get_quantity for item in orderitems]) # `
         - ` return total `
         
-
+# Checkout Dynamic links 
 31. Add the view.py for the Checkout 
         - ` def checkout(request): `
         - ` if request.user.is_authenticated: `
@@ -270,3 +270,10 @@
         - ` items = [] `
         - ` context = {'items': items, 'order': order} `
         - ` return render(request, 'store/checkout.html', context) `
+        
+# Add a static js folder
+32. Create a js folder in the static folder 
+        - add a cart.js inside the folder
+        - add the dynamic link in the main.html 
+        - ` <script type= "text/javascript" src="{% static 'js/cart.js' %}"> </script>` 
+        - test it ` console.log("Hello Wolrd"); `
