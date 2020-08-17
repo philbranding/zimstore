@@ -56,14 +56,14 @@
                 <div style="flex:1">
                     <div class="col-4 col-sm-4 col-md-4">
                                 <div class="quantity">
-                                    <input type="button" value="+" class="plus">
-                                    <input type="number" step="1" max="99" min="1" value="{{item.quantity}}" title="Qty" class="qty" size="4">
-                                    <input type="button" value="-" class="minus">
+                                    <input type="button" value="+" class="plus update-cart" data-product="{{item.product.id}}" data-action="add">
+                                    x {{item.quantity}}
+                                    <input type="button" value="-" class="minus update-cart" data-product="{{item.product.id}}" data-action="remove">
                                 </div>
                             </div>
                 </div>
                 <div style="flex:1"></div>
-                <div style="flex:1">${{item.get_total|floatformat:2}}</div>
+                <div style="flex:1"> <strong>${{item.get_total|floatformat:2}}</strong></div>
             </div>
             {% endfor %}
         </div>

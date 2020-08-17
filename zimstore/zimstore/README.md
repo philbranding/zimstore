@@ -427,3 +427,7 @@
         - `   products = Product.objects.all() `
         - `  context = {'products': products, 'cartItems': cartItems} `
         - `  return render(request, 'store/store.html', context) `
+        
+39. Adding Event Handlers in the frontend to update the Cart
+        - inside the cart.html add the event handlers and the class attribute (update-cart)
+        - ` <img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart" src...> `
