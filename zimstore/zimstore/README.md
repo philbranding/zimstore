@@ -14,7 +14,7 @@
     
 # App Config
 05. add the app in the settings.py under INSTALLED_APPS = [
-    - '[appname].apps.StoreConfig', .... ] `
+    - `'[appname].apps.StoreConfig', .... ] `
 
 # Running the Server
 04. test setup and server
@@ -271,7 +271,8 @@
         - ` context = {'items': items, 'order': order} `
         - ` return render(request, 'store/checkout.html', context) `
         
-# Add a static js folder
+
+# Adding Site Functionality with JS
 32. Create a js folder in the static folder 
         - add a cart.js inside the folder
         - add the dynamic link in the main.html 
@@ -295,5 +296,93 @@
         - ` var productId = this.dataset.product `
         - ` var action = this.dataset.action `
         - `  console.log('productId:', productId, 'Action:', action) `
+        - check if the USER is authenticated or not
+        - ` console.log('USER:', user) `
+        - ` if (user == 'AnonymousUser'){ `
+        - ` console.log('User is not authenticated') `
+        - ` }else{ `
+        - ` console.log('User is authenticated, sending data..') `
+        - ` } `
         - ` }) `
         - ` } `
+        
+35. Updating the Item View 
+        - Add the from django.http import JsonResponse
+        - ` def updateItem(request): `
+        - ` return JsonResponse('Item was added', safe=False)`
+        - `   `
+        - `var updateBtns = document.getElementsByClassName('update-cart')  `
+        - ` for(i = 0; i < updateBtns.length; i++){ `
+        - ` updateBtns[i].addEventListener('click', function(){ `
+        - ` var productId = this.dataset.product `
+        - ` var action = this.dataset.action `
+        - ` console.log('productId:', productId, 'Action:', action) `
+        - ` console.log('USER:', user) `
+        - ` if (user == 'AnonymousUser'){ `
+        - `    console.log('User is not authenticated') `
+        - ` }else{ `
+         - `    updateUserOrder(productId, action) `
+        - ` } `
+        - `  }) `
+        - ` } `
+        - `  function updateUserOrder(productId, action){ `
+        - ` console.log('User is logged in, sending data..') `
+        - ` var url = '/update_item/' `
+        - ` fetch(url, { `
+        - ` method: 'POST', `
+        - `  headers:{ `
+        - ` 'Content-Type': 'application/json' `
+        - ` }, `
+        - ` body:JSON.stringify({'productId': productId, 'action':action}) `
+        - ` }) `
+        - ` } `
+        - first query all the buttons with the update-cart class
+        - loop through all the btns and add an event listener 
+        - this.dataset.product is what enable us to use custom attributes
+        - on click set a function that sets a productID and the action
+        - check if the user is logged in
+        - the fetch function
+        - """ Sending data via method: POST in fetch"""
+        - """ Passing headers with the method: POST via the Content-Type: 'application/json' """
+        - """ body:JSON.stringify({'productId', productId, 'action':action}) """
+        - """ 1) Send the data via POST """
+        - """ 2) Parse the RESPONSE into a JSON String"""
+        - """ 3) Console.log the Data """
+        - Sending the DATA to the Backend in Django
+        - Forbidden (CSRF token missing or incorrect.):
+        - Create the CSRF Token
+
+# create a CSRF Token 
+36. add a CSRF Token for handling the cookies 
+        - Django knows how to handle that, its in the documentation  
+        - https://docs.djangoproject.com/en/3.1/ref/csrf/ 
+        - ` var user = '{{request.user}}' `
+         - ` function getCookie(name) { `
+     - ` let cookieValue = null; `
+     - ` if (document.cookie && document.cookie !== '') { `
+        - `  const cookies = document.cookie.split(';'); `
+         - ` for (let i = 0; i < cookies.length; i++) { `
+           - `   const cookie = cookies[i].trim(); `
+           - `   // Does this cookie string begin with the name we want? `
+           - `   if (cookie.substring(0, name.length + 1) === (name + '=')) { `
+           - `       cookieValue = decodeURIComponent(cookie.substring(name.length + 1)); `
+           - `       break; `
+          - `    } `
+        - `  } `
+    - `  } `
+   - `   return cookieValue; `
+ - ` } `
+ - ` const csrftoken = getCookie('csrftoken'); `
+ 
+37. Rename the getCookie function above top getToken for consistence 
+    - will use it to 
+    
+    
+    
+# Backend Logic
+38. UpdateItem view logic
+        - we now want to process the productId and action when we send this dat to our view from the fetch call. 
+        - Parse Data
+39. import json in the view.py 
+   
+
