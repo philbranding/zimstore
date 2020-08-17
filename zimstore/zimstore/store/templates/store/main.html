@@ -102,7 +102,7 @@ var user = '{{request.user}}'
             <a href="#" class="btn btn-warning  ml-3">Login</a>
             <a class="btn btn-success  ml-3" href="{% url 'cart'%}">
                 <img src="{% static 'images/cart.png'%}" id="cart-icon"> Cart
-                <span id="cart-total" class="badge badge-light">2</span>
+                <span id="cart-total" class="badge badge-light">{{cartItems}}</span>
             </a>
         </div>
     </div>
