@@ -357,22 +357,22 @@
         - Django knows how to handle that, its in the documentation  
         - https://docs.djangoproject.com/en/3.1/ref/csrf/ 
         - ` var user = '{{request.user}}' `
-         - ` function getCookie(name) { `
-     - ` let cookieValue = null; `
-     - ` if (document.cookie && document.cookie !== '') { `
+        - ` function getCookie(name) { `
+        - ` let cookieValue = null; `
+        - ` if (document.cookie && document.cookie !== '') { `
         - `  const cookies = document.cookie.split(';'); `
-         - ` for (let i = 0; i < cookies.length; i++) { `
-           - `   const cookie = cookies[i].trim(); `
-           - `   // Does this cookie string begin with the name we want? `
-           - `   if (cookie.substring(0, name.length + 1) === (name + '=')) { `
-           - `       cookieValue = decodeURIComponent(cookie.substring(name.length + 1)); `
-           - `       break; `
-          - `    } `
+        - ` for (let i = 0; i < cookies.length; i++) { `
+        - `   const cookie = cookies[i].trim(); `
+        - `   // Does this cookie string begin with the name we want? `
+        - `   if (cookie.substring(0, name.length + 1) === (name + '=')) { `
+        - `       cookieValue = decodeURIComponent(cookie.substring(name.length + 1)); `
+        - `       break; `
+        - `    } `
         - `  } `
-    - `  } `
-   - `   return cookieValue; `
- - ` } `
- - ` const csrftoken = getCookie('csrftoken'); `
+        - `  } `
+        - `   return cookieValue; `
+        - ` } `
+        - ` const csrftoken = getCookie('csrftoken'); `
  
 37. Rename the getCookie function above top getToken for consistence 
     - will use it to 
@@ -384,5 +384,29 @@
         - we now want to process the productId and action when we send this dat to our view from the fetch call. 
         - Parse Data
 39. import json in the view.py 
+        - ` def updateItem(request):  `
+        - ` data = json.loads(request.body) `
+        - ` productId = data['productId'] `
+        - ` action = data['action'] `
+        - ` print('productId : ', productId) `
+        - ` print('action : ', action) `
+        - `  `
+        - ` customer = request.user.customer `
+        - ` product = Product.objects.get(id=productId) `
+        - ` order, created = Order.objects.get_or_create(customer=customer, complete=False) `
+        - `  `
+        - ` orderItem, created = OrderItem.objects.get_or_create(order=order, product=product) `
+        - `  `
+        - ` if action == 'add': `
+        - `    orderItem.quantity = (orderItem.quantity + 1) `
+        - ` elif action == 'remove': `
+        - `     orderItem.quantity = (orderItem.quantity -1) `
+        - `  `
+        - ` orderItem.save() `
+        - `  `
+        - `  if orderItem.quantity <= 0: `
+        - `    OrderItem.delete() `
+        - `  `
+        - `  return JsonResponse('Item was added', safe=False) `
    
 
