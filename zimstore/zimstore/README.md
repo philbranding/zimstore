@@ -431,3 +431,35 @@
 39. Adding Event Handlers in the frontend to update the Cart
         - inside the cart.html add the event handlers and the class attribute (update-cart)
         - ` <img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart" src...> `
+        
+40. Shipping Method in the models.py
+        - check if the product being shipped is a digital or physical product that needs shipping
+        - add the shipping function under the order in the models
+        - `  @property  `
+        - `  def shipping(self): `
+        - `  shipping = False `
+        - `  orderitems = self.orderitem_set.all() `
+        - `  for i in orderitems: `
+        - `     if not i.product.digital: `
+        - `          shipping = True `
+        - `   return shipping  `
+        - add the shipping in the views for the unsigned user
+ 
+41. Hide the Shipping Form
+    We need to get the status of 'shipping' from our 'order' object and remove the address filled if shipping is false
+    Add some event handlers for the Shipping information and the Payment information 
+    
+    - `      var shipping = '{{order.shipping}}'  `
+    - `    `
+    - `   if (shipping == 'False'){  `
+    - `      document.getElementById('shipping-info').innerHTML = ''  `
+    - `  }  `
+    - `    `
+    - `   var form = document.getElementById('form')  `
+    - `    `
+    - `    form.addEventListener('submit', function(e){  `
+    - `      e.preventDefault()  `
+    - `      console.log('Form Submitted...')  `
+    - `      document.getElementById('form-button').classList.add('hidden')  `
+    - `      document.getElementById('payment-info').classList.remove('hidden')  `
+    - `    })  `
