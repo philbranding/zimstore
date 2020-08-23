@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 import json
+import datetime
+from .models import *
 
 from .models import *
 
@@ -81,3 +83,7 @@ def updateItem(request):
         OrderItem.delete()
 
     return JsonResponse('Item was added', safe=False)
+
+
+def processOrder(request):
+    return JsonResponse('Payment Complete', safe=False)

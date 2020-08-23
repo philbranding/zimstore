@@ -463,3 +463,14 @@
     - `      document.getElementById('form-button').classList.add('hidden')  `
     - `      document.getElementById('payment-info').classList.remove('hidden')  `
     - `    })  `
+
+# Processing Order
+42. Process Order in the view.py
+    - ` def processOrder(request):   `
+    - `return JsonResponse('Payment Complete', safe=False)` 
+    - `    })  `
+    
+
+43. add a  `path('process_order/', views.processOrder, name="update_item")` in the url.py file
+
+    

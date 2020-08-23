@@ -44,8 +44,7 @@
             </div>
             {% for item in items %}
             <div class="cart-row">
-                <div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}">
-                </div>
+                <div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}"></div>
                 <div style="flex:1"></div>
                 <div style="flex:2"><p>{{item.product.name}}</p></div>
                 <div style="flex:1"></div>
@@ -56,9 +55,9 @@
                 <div style="flex:1">
                     <div class="col-4 col-sm-4 col-md-4">
                                 <div class="quantity">
-                                    <input type="button" value="+" class="plus update-cart" data-product="{{item.product.id}}" data-action="add">
+                                    <input type="button" value="+" class="plus update-cart chg-quantity" data-product="{{item.product.id}}" data-action="add">
                                     x {{item.quantity}}
-                                    <input type="button" value="-" class="minus update-cart" data-product="{{item.product.id}}" data-action="remove">
+                                    <input type="button" value="-" class="minus update-cart chg-quantity" data-product="{{item.product.id}}" data-action="remove">
                                 </div>
                             </div>
                 </div>
